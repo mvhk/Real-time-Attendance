@@ -25,6 +25,8 @@ include "connect.php";
         // student(id,cuniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')
         $sql = "UPDATE student SET ctime = now(),  profid = '$profid',verified=1 where id = '$roll' and uniq='$cuniq'";
         if($conn->query($sql) === TRUE){
+            $sql="insert into studentre(id,uniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')" ;   
+            $conn->query($sql);
             echo "done";
             header("Location:index.php");
         }
