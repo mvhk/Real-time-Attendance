@@ -31,7 +31,7 @@ session_start();
         }
     ?>
     <form action="#" method="post">
-        <input type="email" name="email" placeholder="email"><br><br>
+        <input type="text" name="email" placeholder="email"><br><br>
         <input type="password" name="pwd" placeholder="password"><br><br>
         <button type="submit" name="submit">Submit</button>
     </form>
