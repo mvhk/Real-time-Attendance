@@ -27,6 +27,10 @@ include "connect.php";
         if($conn->query($sql) === TRUE){
             $sql="insert into studentre(id,uniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')" ;   
             $conn->query($sql);
+            $ran = mt_rand(100,1000);
+            $sql = "update student set uniq='$ran' where id='$roll'";
+            $conn->query($sql);
+
             echo "done";
             header("Location:index.php");
         }
