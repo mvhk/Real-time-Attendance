@@ -14,21 +14,22 @@ include "connect.php";
     <form action="#" method="post">
         <input type="text" name="profid" placeholder="Prof ID"><br><br>
         <input type="text" name="roll" placeholder="Roll Number"><br><br>
-        <input type="text" name="uniq" placeholder="Unique ID"><br><br>
+        <input type="text" name="cuniq" placeholder="Unique ID"><br><br>
         <button type="submit" name="submit">Submit</button>
     </form>
     <?php
     if(isset($_POST['submit'])){
         $profid = $_POST['profid'];
         $roll = $_POST['roll'];
-        $uniq = $_POST['uniq'];
-        $sql = "INSERT INTO student(id,uniq,ctime,profid) values('$roll','$uniq',now(),'$profid')";
+        $cuniq = $_POST['cuniq'];
+        // student(id,cuniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')
+        $sql = "UPDATE student SET ctime = now(),  profid = '$profid',verified=1 where id = '$roll' and uniq='$cuniq'";
         if($conn->query($sql) === TRUE){
             echo "done";
             header("Location:index.php");
         }
         else{
-            echo "sorry!";
+            echo "sorry! something wrong happend";
         }
     }
     ?>

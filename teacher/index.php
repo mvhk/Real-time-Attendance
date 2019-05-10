@@ -1,5 +1,5 @@
 <?php
-include "../student/connect.php";
+include "connect.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -12,6 +12,9 @@ session_start();
 </head>
 <body>
     <?php
+    if(isset($_SESSION['email'])){
+        header("Location:studentde.php");  
+    }
         if(isset($_POST['submit'])){
             $email = $_POST['email'];
             $pwd = $_POST['pwd'];
