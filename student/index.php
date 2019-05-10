@@ -22,8 +22,11 @@ include "connect.php";
         $profid = $_POST['profid'];
         $roll = $_POST['roll'];
         $cuniq = $_POST['cuniq'];
-        // student(id,cuniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')
-        $sql = "UPDATE student SET ctime = now(),  profid = '$profid',verified=1 where id = '$roll' and uniq='$cuniq'";
+        $sql = "select * from student where id='$roll' and uniq='$cuniq'";
+        $result = $conn->query($sql);
+        // $row = mysqli_fetch_array($result);
+        if($result->num_rows>0){
+        $sql = "UPDATE student SET ctime = now(),  profid = '$profid',verified=1 where (id = '$roll' and uniq='$cuniq')";
         if($conn->query($sql) === TRUE){
             $sql="insert into studentre(id,uniq,ctime,profid) values('$roll','$cuniq',now(),'$profid')" ;   
             $conn->query($sql);
@@ -32,10 +35,13 @@ include "connect.php";
             $conn->query($sql);
 
             echo "done";
-            header("Location:index.php");
+            // header("Location:index.php");
         }
         else{
             echo "sorry! something wrong happend";
+        }}
+        else{
+            echo "invalid details";
         }
     }
     ?>
