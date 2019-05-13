@@ -10,7 +10,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Attendance - Teacher</title>
 </head>
-<body>
+<body style="text-align:center;">
+    <h2>Professor Login</h2>
+    <a href="../feedback/">Give Feedback</a><br><br><br>
     <?php
     if(isset($_SESSION['email'])){
         header("Location:studentde.php");  

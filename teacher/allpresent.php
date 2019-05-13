@@ -8,24 +8,26 @@
     <title>Attendance - Student Details</title>
 </head>
 <body style="text-align:center;">
-<h2>Generated Unique Id's</h2>
+<h2>Full Attendance</h2>
 <a href="studentre.php">Reassign unique id's </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="studentde.php">Show Unique Id's</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="present.php">Present Students</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="attendance.php">Full Attendance</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="allpresent.php">Student Current Status</a></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="addstu.php">Add Student</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../feedback/">Give Feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.php">Logout</a>
-   <br><br>
-  <table>
+  
+    <table>
     <tr>
     <th>Roll Number</th>
-    <th>Unique Id</th>
+    <th>Teacher ID</th>
+    <th>Teacher Name</th>
+    <th>Date & time</th>
     </tr>
-    
-  
     <?php
     include "connect.php";
     session_start();
     if($_SESSION['email']){
-        $result = $conn->query("SELECT * FROM student");
+        $curr=$_SESSION['email'];
+        $result = $conn->query("SELECT * FROM studentre");
         if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                echo '<tr><td>'.$row['id'].'</td><td>'.$row['uniq'].'</td></tr>';
+
+            while($row = $result->fetch_assoc()){   
+                echo '<tr><td>'.$row['id'].'</td><td>'.$row['profid'].'</td><td>'.$row['profname'].'</td><td>'.$row['ctime'].'</td></tr>';
             }
         }
     }

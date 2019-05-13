@@ -8,8 +8,9 @@
 </head>
 <body style="text-align:center;">
     <h2>Present Students in the class</h2>
-    <a href="studentde.php">Show Unique Id's</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.php">Logout</a>
-    <table>
+    <a href="studentre.php">Reassign unique id's </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="studentde.php">Show Unique Id's</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="present.php">Present Students</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="attendance.php">Full Attendance</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="allpresent.php">Student Current Status</a></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="addstu.php">Add Student</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../feedback/">Give Feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="logout.php">Logout</a>
+ <br><br>
+   <table>
     <tr>
     <th>Roll Number</th>
     <th>Time of entry </th>
@@ -24,7 +25,7 @@
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc())
             {
-                echo '<tr><td>'.$row['id'].'</td><td>'.$row['ctime'].'</td></tr><br>';
+                echo '<tr><td>'.$row['id'].'</td><td>'.$row['ctime'].'</td></tr>';
             }
         }
     }
